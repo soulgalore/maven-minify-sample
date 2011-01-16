@@ -8,5 +8,7 @@
 4. Give the minified js and css files unique names for each release
 5. Gzip them and create gzipped versions
 
+-- The src-tree holds an example setup
+
 -- How to use
 mvn clean package
