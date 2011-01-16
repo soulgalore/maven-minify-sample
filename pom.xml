@@ -1,0 +1,174 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.soulgalore</groupId>
+	<artifactId>web</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>web</name>
+	<url>http://tech.soulgalore.com</url>
+	<inceptionYear>2011</inceptionYear>
+	<description>Default web setup</description>
+
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Timestamp used for setting unique names of generated minified css 
+			and js -->
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+	</properties>
+
+	<developers>
+		<developer>
+			<id>peter</id>
+			<name>Peter</name>
+			<email>peter@soulgalore.com</email>
+			<url>http://peterhedenskog.com</url>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+	</developers>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- Used for minfiying js and css -->
+				<groupId>com.samaxes.maven</groupId>
+				<artifactId>maven-minify-plugin</artifactId>
+				<version>1.3.1</version>
+				<executions>
+					<execution>
+						<id>default-minify</id>
+						<phase>process-resources</phase>
+						<configuration>
+							<cssSourceDir>css</cssSourceDir>
+							<cssSourceIncludes>
+								<cssSourceInclude>**</cssSourceInclude>
+							</cssSourceIncludes>
+							<cssSourceExcludes>
+								<cssSourceExclude>**/*.min.css</cssSourceExclude>
+							</cssSourceExcludes>
+							<cssFinalFile>${project.artifactId}-${maven.build.timestamp}.css</cssFinalFile>
+							<jsSourceDir>js</jsSourceDir>
+							<jsSourceIncludes>
+								<jsSourceInclude>**</jsSourceInclude>
+							</jsSourceIncludes>
+							<jsSourceExcludes>
+								<jsSourceExclude>**/*.min.js</jsSourceExclude>
+							</jsSourceExcludes>
+							<jsFinalFile>${project.artifactId}-${maven.build.timestamp}.js</jsFinalFile>
+						</configuration>
+						<goals>
+							<goal>minify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<executions>
+					<!-- added for making the replace plugin run in the exploded phase -->
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>exploded</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>maven-replacer-plugin</artifactId>
+				<version>1.3.5</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<filesToInclude>target/${project.build.finalName}/WEB-INF/inc/js.jsp,target/${project.build.finalName}/WEB-INF/inc/css.jsp</filesToInclude>
+					<replacements>
+						<replacement>
+							<token>
+								(?m)&lt;!--replaceCSS(.|\s)*?replaceCSSEnd --&gt; </token>
+							<value>&lt;link rel="stylesheet" type="text/css"
+								href="/css/${project.artifactId}-${maven.build.timestamp}.min.css"/&gt;</value>
+						</replacement>
+						<replacement>
+							<token>(?m)&lt;!--replaceJS(.|\s)*?replaceJSEnd --&gt;</token>
+							<value>&lt;script type="text/javascript"
+								src="/js/${project.artifactId}-${maven.build.timestamp}.min.js"&gt;&lt;/script&gt;</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<configuration>
+							<target>
+
+								<gzip
+									src="${basedir}/target/${project.build.finalName}/css/${project.artifactId}-${maven.build.timestamp}.min.css"
+									destfile="${basedir}/target/${project.build.finalName}/css/${project.artifactId}-${maven.build.timestamp}.min.css.gz" />
+								<gzip
+									src="${basedir}/target/${project.build.finalName}/js/${project.artifactId}-${maven.build.timestamp}.min.js"
+									destfile="${basedir}/target/${project.build.finalName}/js/${project.artifactId}-${maven.build.timestamp}.min.js.gz" />
+
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+
+	<repositories>
+		<!-- Used for servlet api -->
+		<repository>
+			<id>java.net</id>
+			<url>http://download.java.net/maven/1</url>
+		</repository>
+	</repositories>
+</project>
