@@ -164,11 +164,5 @@
 	</build>
 
 
-	<repositories>
-		<!-- Used for servlet api -->
-		<repository>
-			<id>java.net</id>
-			<url>http://download.java.net/maven/1</url>
-		</repository>
-	</repositories>
+	
 </project>
