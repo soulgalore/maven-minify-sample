@@ -1,5 +1,8 @@
 --- Example project holding a good maven pom.xml file that will give good web metrics
 
+
+-- TODO - needs to be updated top 2011 :)
+
 -- Functions used right now:
 
 1. Create one css file from existing css-files
@@ -12,3 +15,4 @@
 
 -- How to use
 mvn clean package
+
