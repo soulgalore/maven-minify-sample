@@ -2,3 +2,7 @@
  * Content in example2.css
  */
  
+body {
+	font-family:Verdana,Helvetica,Arial,sans-serif;
+	font-size: 13px;
+}
