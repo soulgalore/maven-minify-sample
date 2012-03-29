@@ -4,7 +4,7 @@
 This is a working pom.xml file using the maven-minify-plugin, gziping the result and replacing the current css/js 
 links to the minified version.
 
-## This is what happens:
+## This is what happens
 
 1. Create one css file from existing css-files
 2. Create one js file from existing js-files
@@ -16,12 +16,13 @@ links to the minified version.
 ## What you need to do
 Configure your webserver to pick the gz-versions of the files.
 
-## How to use it:
+## How to use it
 ```
 mvn clean package
 ```
 
-## The src-tree holds an example setup
+## Structure of the project
+* The src-tree holds an example setup
 
 
 ## TODO
