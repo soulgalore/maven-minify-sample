@@ -3,8 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.soulgalore</groupId>
-	<artifactId>web</artifactId>
-	<version>0.0.3</version>
+	<artifactId>maven-minify</artifactId>
+	<version>0.8</version>
 	<packaging>pom</packaging>
 
 	<name>web</name>
@@ -34,7 +34,6 @@
 			<email>peter@soulgalore.com</email>
 			<url>http://peterhedenskog.com</url>
 			<roles>
-				<role>architect</role>
 				<role>developer</role>
 			</roles>
 			<timezone>+2</timezone>
@@ -150,7 +149,4 @@
 
 		</plugins>
 	</build>
-
-
-	
 </project>
