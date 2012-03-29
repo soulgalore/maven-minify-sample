@@ -1,4 +1,4 @@
-# Example project minifying js & css with maven
+# Example project minifying js & css with Maven
 
 
 This is a working pom.xml file using the maven-minify-plugin, gziping the result and replacing the current css/js 
