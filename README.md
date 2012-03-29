@@ -21,9 +21,9 @@ Configure your web server to pick the gz-versions of the files.
 
 
 ## Structure of the project
-The src-tree holds an example setup with two css & two js files that are concated & minified and example files 
+The /src/-tree holds an example setup with two css & two js files that are concated & minified and example files 
 that hold references/links to the actual js/css files.
 
 
 ## TODO
- - the naming of the css/js file uses the current date/time, not so good if you releasing multiple times a day, needs to be changed!
+The naming of the css/js file uses the current date/time, not so good if you releasing multiple times a day, needs to be changed!
