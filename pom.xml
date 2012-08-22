@@ -4,13 +4,12 @@
 
 	<groupId>com.soulgalore</groupId>
 	<artifactId>maven-minify</artifactId>
-	<version>0.8</version>
+	<version>0.9</version>
 	<packaging>pom</packaging>
 
 	<name>web</name>
-	<url>http://tech.soulgalore.com</url>
 	<inceptionYear>2011</inceptionYear>
-	<description>Web metrics is an example of how to setup a good pom.xml file for good web metrics</description>
+	<description>Web metrics is an example of how to setup a good pom.xml file for good web perfomance metrics</description>
 
 	<licenses>
 		<license>
@@ -47,8 +46,8 @@
 			<plugin>
 				<!-- Used for minfying js and css -->
 				<groupId>com.samaxes.maven</groupId>
-				<artifactId>maven-minify-plugin</artifactId>
-				<version>1.3.5</version>
+				<artifactId>minify-maven-plugin</artifactId>
+				<version>1.5.1</version>
 				<executions>
 					<execution>
 						<id>default-minify</id>
@@ -93,9 +92,9 @@
 			</plugin>
 
 			<plugin>
-				<groupId>com.google.code.maven-replacer-plugin</groupId>
-				<artifactId>maven-replacer-plugin</artifactId>
-				<version>1.3.5</version>
+			  <groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.0</version>
 				<executions>
 					<execution>
 						<phase>prepare-package</phase>
@@ -110,13 +109,11 @@
 						<replacement>
 							<token>
 								(?m)&lt;!--replaceCSS(.|\s)*?replaceCSSEnd --&gt; </token>
-							<value>&lt;link rel="stylesheet" type="text/css"
-								href="/css/${project.artifactId}-${maven.build.timestamp}.min.css"/&gt;</value>
+							<value>&lt;link rel="stylesheet" type="text/css" href="/css/${project.artifactId}-${maven.build.timestamp}.min.css"/&gt;</value>
 						</replacement>
 						<replacement>
 							<token>(?m)&lt;!--replaceJS(.|\s)*?replaceJSEnd --&gt;</token>
-							<value>&lt;script type="text/javascript"
-								src="/js/${project.artifactId}-${maven.build.timestamp}.min.js"&gt;&lt;/script&gt;</value>
+							<value>&lt;script type="text/javascript" src="/js/${project.artifactId}-${maven.build.timestamp}.min.js"&gt;&lt;/script&gt;</value>
 						</replacement>
 					</replacements>
 				</configuration>
