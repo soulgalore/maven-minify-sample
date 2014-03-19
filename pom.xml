@@ -21,7 +21,7 @@
 	</licenses>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- Timestamp used for setting unique names of generated minified css 
+		<!-- Timestamp used for setting unique names of generated minified css
 			and js TODO: check if checksum or something is more suitable for release every hour ...-->
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 	</properties>
@@ -39,7 +39,7 @@
 		</developer>
 	</developers>
 
-	
+
 
 	<build>
 		<plugins>
@@ -62,6 +62,8 @@
 							</cssSourceExcludes>
 							<cssFinalFile>${project.artifactId}-${maven.build.timestamp}.css</cssFinalFile>
 							<jsSourceDir>js</jsSourceDir>
+							<!-- Mote: use jsSourceFile instead of jsSourceIncludes
+							to make sure the JS files are included in the right order -->
 							<jsSourceIncludes>
 								<jsSourceInclude>**</jsSourceInclude>
 							</jsSourceIncludes>
