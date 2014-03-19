@@ -57,19 +57,31 @@
                 <cssSourceFile>example.css</cssSourceFile>
 								<cssSourceFile>example2.css</cssSourceFile>
 							</cssSourceFiles>
+							<!-- Note: use cssSourceFile instead of cssSourceIncludes-->
+							<!-- to make sure the CSS files are included in the order you specify -->
+							<!--
+							<cssSourceIncludes>
+                <cssSourceInclude>css/**</cssSourceInclude>
+              </cssSourceIncludes>
 							<cssSourceExcludes>
 								<cssSourceExclude>**/*.min.css</cssSourceExclude>
 							</cssSourceExcludes>
+							-->
 							<cssFinalFile>${project.artifactId}-${maven.build.timestamp}.css</cssFinalFile>
 							<!-- Note: use jsSourceFile instead of jsSourceIncludes-->
 							<!-- to make sure the JS files are included in the order you specify -->
+							<!--
+							<jsSourceIncludes>
+                <jsSourceInclude>js/**</jsSourceInclude>
+              </jsSourceIncludes>
+							<jsSourceExcludes>
+								<jsSourceExclude>**/*.min.js</jsSourceExclude>
+							</jsSourceExcludes>
+							-->
 							<jsSourceFiles>
 								<jsSourceFile>example.js</jsSourceFile>
 								<jsSourceFile>example2.js</jsSourceFile>
 							</jsSourceFiles>
-							<jsSourceExcludes>
-								<jsSourceExclude>**/*.min.js</jsSourceExclude>
-							</jsSourceExcludes>
 							<jsFinalFile>${project.artifactId}-${maven.build.timestamp}.js</jsFinalFile>
 						</configuration>
 						<goals>
