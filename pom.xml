@@ -53,20 +53,20 @@
 						<id>default-minify</id>
 						<phase>process-resources</phase>
 						<configuration>
-							<cssSourceDir>css</cssSourceDir>
-							<cssSourceIncludes>
-								<cssSourceInclude>**</cssSourceInclude>
-							</cssSourceIncludes>
+							<cssSourceFiles>
+                <cssSourceFile>example.css</cssSourceFile>
+								<cssSourceFile>example2.css</cssSourceFile>
+							</cssSourceFiles>
 							<cssSourceExcludes>
 								<cssSourceExclude>**/*.min.css</cssSourceExclude>
 							</cssSourceExcludes>
 							<cssFinalFile>${project.artifactId}-${maven.build.timestamp}.css</cssFinalFile>
-							<jsSourceDir>js</jsSourceDir>
-							<!-- Mote: use jsSourceFile instead of jsSourceIncludes
-							to make sure the JS files are included in the right order -->
-							<jsSourceIncludes>
-								<jsSourceInclude>**</jsSourceInclude>
-							</jsSourceIncludes>
+							<!-- Note: use jsSourceFile instead of jsSourceIncludes-->
+							<!-- to make sure the JS files are included in the order you specify -->
+							<jsSourceFiles>
+								<jsSourceFile>example.js</jsSourceFile>
+								<jsSourceFile>example2.js</jsSourceFile>
+							</jsSourceFiles>
 							<jsSourceExcludes>
 								<jsSourceExclude>**/*.min.js</jsSourceExclude>
 							</jsSourceExcludes>

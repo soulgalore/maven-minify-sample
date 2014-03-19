@@ -5,8 +5,8 @@ links in configured files to the minified version.
 
 ## This is what happens
 
-1. Creates one css file from existing css-files
-2. Creates one js file from existing js-files
+1. Creates one css file from existing css-files (you need to specify each CSS in the pom.xml, to be able to be sure the order is right)
+2. Creates one js file from existing js-files (you need to specify each JS in the pom.xml, to be able to be sure the order is right)
 3. Minifies them
 4. Give the minified js and css files unique names for each release (right now using time stamp)
 5. Creates gzipped versions
