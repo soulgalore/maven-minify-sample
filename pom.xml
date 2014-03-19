@@ -4,12 +4,12 @@
 
 	<groupId>com.soulgalore</groupId>
 	<artifactId>maven-minify</artifactId>
-	<version>0.9</version>
+	<version>1.0</version>
 	<packaging>pom</packaging>
 
-	<name>web</name>
+	<name>Maven minify sample</name>
 	<inceptionYear>2011</inceptionYear>
-	<description>Web metrics is an example of how to setup a good pom.xml file for good web perfomance metrics</description>
+	<description>Maven minify is an example of how to setup a good pom.xml file for good web perfomance metrics</description>
 
 	<licenses>
 		<license>
@@ -31,7 +31,7 @@
 			<id>peter</id>
 			<name>Peter</name>
 			<email>peter@soulgalore.com</email>
-			<url>http://peterhedenskog.com</url>
+			<url>http://www.peterhedenskog.com</url>
 			<roles>
 				<role>developer</role>
 			</roles>
@@ -47,7 +47,7 @@
 				<!-- Used for minfying js and css -->
 				<groupId>com.samaxes.maven</groupId>
 				<artifactId>minify-maven-plugin</artifactId>
-				<version>1.5.1</version>
+				<version>1.6.2</version>
 				<executions>
 					<execution>
 						<id>default-minify</id>
